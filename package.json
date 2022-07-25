@@ -1,0 +1,24 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "``` /* ************************************************************************** */ /*                                                                            */ /*                                                        :::      ::::::::   */ /*   Type Script Practice                               :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */ /*   By: hawadh <hawadh@student.42Abudhabi.ae>      +#+  +:+       +#+        */ /*                                                +#+#+#+#+#+   +#+           */ /*   Created: 2022/07/22 12:00:00 by hawadh            #+#    #+#             */ /*                                                    ###   ########.fr       */ /*                                                                            */ /* ************************************************************************** */ ```",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MisterTooh/TypeScript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MisterTooh/TypeScript/issues"
+  },
+  "homepage": "https://github.com/MisterTooh/TypeScript#readme",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
