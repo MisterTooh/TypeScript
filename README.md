@@ -11,6 +11,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 ```
+#  Installation & Resources
+
+**This Package Manager recommended by the nodejs website can install all you need:**
+https://github.com/nvm-sh/nvm
+
+**Documentation for npm:**
+https://docs.npmjs.com/creating-a-package-json-file
+
+**Learn from:**
+https://www.digitalocean.com/community/tutorials/typescript-new-project
+
+```
+npm install typescript
+npm install node
+npm install ts-node
+npm install *module name*
+npm tsc --init /* for default tsconfig.json file */
+npm init --yes /* for default package.json file */
+```
+
 
 # TypeScript = JavaScript + Atype System
 
@@ -29,6 +49,38 @@ TypeScript is Basically JavaScript with more Debugging as you develop, rather th
 Almost everything in TypeScript is exactly with Java, except for Type annotation is required in almost all cases.
 
 ```
+## Summary
+
+1. Annotating our variables will give us errors if we make type syntax mistakes while in dev.
+
+2. Annotating a type to our variables will protect us from above mistakes.
+
+3. Every Value has a type. Examples:
+   1. String
+   2. Number (int, long, float, etc)
+   3. Boolean (true, false)
+   4. Date / Todo (Our definitions: Objects) /* Works similar to typedef in C */
+
+4. Two catagories of Types:
+
+   1. Primitive (Basic Types):
+         1. string.
+         2. boolean.
+         3. number.
+         4. null.
+         5. void.
+         6. underfined.
+
+   2. Object (our definitions)
+         1. functions.
+         2. arrays.
+         3. classes.
+         4. objects.
+
+5. Annotations and Inference:
+
+   1. Annotations: Code we tell TypeScript; what type of value a variable will refer to.
+   2. Inference: TypeScript will guess the type.
 
 ## Notes:
 
