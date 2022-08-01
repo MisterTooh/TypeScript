@@ -11,16 +11,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 ```
-#  Installation & Resources
 
-**This Package Manager recommended by the nodejs website can install all you need:**
+# Installation & Resources
+
+**This Package Manager recommended by the nodejs website and can install all you need:**
+
 https://github.com/nvm-sh/nvm
 
 **Documentation for npm:**
+
 https://docs.npmjs.com/creating-a-package-json-file
 
 **Learn from:**
+
+https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
 https://www.digitalocean.com/community/tutorials/typescript-new-project
+https://learnxinyminutes.com/docs/typescript/
+https://www.w3schools.com/typescript/index.php
 
 ```
 npm install typescript
@@ -30,7 +37,6 @@ npm install *module name*
 npm tsc --init /* for default tsconfig.json file */
 npm init --yes /* for default package.json file */
 ```
-
 
 # TypeScript = JavaScript + Atype System
 
@@ -43,12 +49,8 @@ npm init --yes /* for default package.json file */
 
 # TypeScript Quick Notes
 
-```
-TypeScript is Basically JavaScript with more Debugging as you develop, rather than during compilation and testing.
+TypeScript is Basically JavaScript with more Debugging as you develop, rather than during compilation and testing. Almost everything in TypeScript is exactly with Java, except for Type annotation is required in almost all cases.
 
-Almost everything in TypeScript is exactly with Java, except for Type annotation is required in almost all cases.
-
-```
 ## Summary
 
 1. Annotating our variables will give us errors if we make type syntax mistakes while in dev.
@@ -56,26 +58,28 @@ Almost everything in TypeScript is exactly with Java, except for Type annotation
 2. Annotating a type to our variables will protect us from above mistakes.
 
 3. Every Value has a type. Examples:
+
    1. String
    2. Number (int, long, float, etc)
    3. Boolean (true, false)
-   4. Date / Todo (Our definitions: Objects) /* Works similar to typedef in C */
+   4. Date / Todo (Our definitions: Objects) /_ Works similar to typedef in C _/
 
 4. Two catagories of Types:
 
    1. Primitive (Basic Types):
-         1. string.
-         2. boolean.
-         3. number.
-         4. null.
-         5. void.
-         6. underfined.
+
+      1. string.
+      2. boolean.
+      3. number.
+      4. null.
+      5. void.
+      6. underfined.
 
    2. Object (our definitions)
-         1. functions.
-         2. arrays.
-         3. classes.
-         4. objects.
+      1. functions.
+      2. arrays.
+      3. classes.
+      4. objects.
 
 5. Annotations and Inference:
 
@@ -84,15 +88,19 @@ Almost everything in TypeScript is exactly with Java, except for Type annotation
 
 ## Notes:
 
-1. Type Inference only works if declaration and initialisation is on the same line.
+1. There are 3 basic types in TypeScript. `Boolean, Number, String`, and variables need to be Type Annotated.
 
-2. Type `any`:
-   `JSON.parse` (a function) returns a value of type 'any', eg; if we pass a `string`, we get a `string` (Not really, we get `any`, similar to `void *`); Anytime we use `JSON.parse();` we get an `any` return value **TypeScript cannot predict return value**, and so returns 'any'. **_AVOID TYPE 'any'._** (See file `variables.ts`, `objects.ts`)
+2. Type Inference only works if declaration and initialisation is on the same line.
 
-3. Functions:RULES:
+   1. but you can omit the type annotation if the variables are derived from explicit literals.
 
-   1. No Type Inference for Arguments for Functions!
-   2. No Type Inference for Functions Return Values! (Though it works fine).
+3. Type `any`:
+
+   1. If no type is specified, or it is impossible to know.
+
+   2. `JSON.parse` (a function) returns a value of type 'any', eg; if we pass a `string`, we get a `string` (Not really, we get `any`, similar to `void *`); Anytime we use `JSON.parse();` we get an `any` return value **TypeScript cannot predict return value**, and so returns 'any'.
+
+   ## **_`AVOID TYPE 'any'`_** (See file `variables.ts`, `objects.ts`)
 
 4. Functions Annotations:
 
@@ -100,6 +108,11 @@ Almost everything in TypeScript is exactly with Java, except for Type annotation
    2. Note: TypeScript will not try to guess the content of the function, If you return a number and a number is returned, TypeScript will not hold your hand with logic.
 
    (See `functions.ts`, `destructuring.ts`)
+
+   **_Functions:RULES:_**
+
+   1. No Type Inference for Arguments for Functions!
+   2. No Type Inference for Functions Return Values! (Though it works fine).
 
 5. Arrays:
 
@@ -117,20 +130,80 @@ Almost everything in TypeScript is exactly with Java, except for Type annotation
 
    1. Type annotation is in a specific order of our choice and cannot be changed outside of the decleration (Not very useful).
    2. Very similar to an array: Array like structure where each element represents some property of a record.
-   3. ***Objects are preferrable to Tuples*** (See last declaration in `tuple.ts`)
+   3. **_Objects are preferrable to Tuples_** (See last declaration in `tuple.ts`)
 
-7. Interfaces (See interfaces.ts)
+7. Interfaces (See interfaces.ts): Interfaces are structural, anything that has the properties is compliant with the interface.
 
    1. Creates a new type, describing the property names and value types of an object.
 
    2. Whenever creating an `interface` we `Capitalise` the first letter
+
       - Eg; `interface Vehicle`.
 
    3. Using an interface we can save so many lines of code and reduce code repetition.
-         -	Interface ensures that all type properties align with types.
-         -	Objects that wish to be called using interface Annotation, must.
-   		-  follow type decalred in interface.
 
-   4. Basic Syntax of Interfaces:
-   
-      1. TypeScript will only check minimum requirements (variables) to Qualify as a type. If a minimum of 1 exists, then it qualifies.
+      - Interface ensures that all type properties align with types.
+      - Objects that wish to be called using interface Annotation, must.
+        - follow type decalred in interface.
+
+   4. Properties of an interface dictate the types required by an object to be used in a function etc;
+
+      - Optional Properties can be included by adding a `?` to the variable name `age?: number;`.
+      - Interfaces can also describe a function type.
+
+   5. Basic Syntax of Interfaces (See `interfaces.ts` ):
+
+      1. TypeScript will only check minimum requirements (variables) to Qualify as a type. If a minimum of 1 exists, then it qualifies. IE: Satisfying a Function type requirement by an interface definition, only requires 1 Type annotation to be correct and so will ignore other properties in the Object.
+
+      2. Different Objects can all satisfy an interface's type annotation requirements if they have the same required property, even if the objects are completely different from each other. (eg; Cars and Drinks; See `interfaces.ts` Line `#104`).
+
+   6. Majortively Work with functions that are type annotated as interfaces so we can control Type Annotation more. To support code reuseable strategy.
+
+      1. Now we can make Objects and/or Classes that can decide to implement the interface.
+
+8. Classes:
+
+   1. Class is a blueprint to create an object with some fields (Values) and methods (Functions) to represent a thing.
+
+      - Traditionally name all Classes with a Capital Letter.
+      - Name instances with the same word but lowercase.
+
+   2. Classes can be explicitly marked as implementing an interface. Any missing properties will then cause an error at compile-time.
+
+   3. How classes work with Methods (See `/classes/classes.ts`):
+
+      - A class will have methods declared in them, which are similar to functions that perform tasks.
+
+   4. Inheritence:
+
+      - A class can inherit methods from an already declared class.
+      - An inherited class can override the methods declared in a parent class that will only affect the methods within the inherited class.
+
+   5. Modifiers:
+
+      - Members are public by default
+      - A keyword that can be placed on different methods and/or properties
+        within a class.
+      - There are 3 Types, Public, Private, and Protected.
+      - Modifiers control access on the use of a Classes members:
+
+        - Public: A Member can be called anywhere at anytime.
+        - Private: Can only be called by other methods within the class.
+        - Protected: Can be called by other methods within the class and/or by other methods in child/inherited classes.
+
+      - If a Method is marked private, compiler will give a warning and not compile.
+
+   6. Fields: (adding properties to a class)
+
+      - You can initialise a property OR a constructor. There is no need to do both.
+      - Modifiers apply to variables just as they do to methods.
+
+        - Public: Accessed anywhere.
+        - Protected/Private: Can no longer be accessed outside the class.
+
+      - How fields work with Inheritence:
+
+        - When calling the constructor in a child class we're required to call the constructor method of the parent class as well. (see line `#49` & line `#72` in `classes.ts`)
+        - We can call `super();` in the child class which is a reference to the parent constructor method which allows us to add a new type parameter.
+
+   ## Interfaces and Classes allow us to re-use code.

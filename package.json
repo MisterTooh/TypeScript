@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/MisterTooh/TypeScript#readme",
   "dependencies": {
-    "axios": "^0.27.2"
+    "axios": "^0.27.2",
+    "nestjs": "^0.0.1"
   }
 }
