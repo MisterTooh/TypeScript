@@ -35,12 +35,12 @@ npm install node
 npm install ts-node
 npm install *module name*
 npm tsc --init /* for default tsconfig.json file */
-npm init --yes /* for default package.json file */
+npm init --y /* for default package.json file */
 ```
 
 # TypeScript = JavaScript + Atype System
 
-`TS Type System:`
+`TS Type System:` The entire role of TypeScript is to show us where we have errors in our code.
 
 1. Catches errors during Development.
 2. Uses Type annotation.
@@ -85,6 +85,7 @@ TypeScript is Basically JavaScript with more Debugging as you develop, rather th
 
    1. Annotations: Code we tell TypeScript; what type of value a variable will refer to.
    2. Inference: TypeScript will guess the type.
+   3. Thanks to `interfaces`, object types can have multiple types, as long as they satisfy the `interface` requirements.
 
 ## Notes:
 
@@ -161,7 +162,7 @@ TypeScript is Basically JavaScript with more Debugging as you develop, rather th
 
       1. Now we can make Objects and/or Classes that can decide to implement the interface.
 
-8. Classes:
+8. Classes:- When we create a `Class` they have a dual nature. We can use it to create an instance of an object. We can also use a `Class` to refer to a `type`
 
    1. Class is a blueprint to create an object with some fields (Values) and methods (Functions) to represent a thing.
 
@@ -206,4 +207,41 @@ TypeScript is Basically JavaScript with more Debugging as you develop, rather th
         - When calling the constructor in a child class we're required to call the constructor method of the parent class as well. (see line `#49` & line `#72` in `classes.ts`)
         - We can call `super();` in the child class which is a reference to the parent constructor method which allows us to add a new type parameter.
 
-   ## Interfaces and Classes allow us to re-use code.
+   7. By Adding Keyword `class "implements" interface` to our class declaration, and exporting it, TypeScript will Alert us if the class does not adhere to the interface requirements. (see `TS_APP/maps/src` Directory).
+
+**_ Interfaces and Classes allow us to re-use code. _**
+
+#See Directory `TS_APP`
+
+## Automating Build & Run, & Project Organisation
+
+#See Directory `TS_APP/sort/`
+
+1. In `tsconfig.json` uncomment `rootDir:`"**(Place ./src here)**", and uncomment `outDir:`"**(Place ./build here)**"
+
+   - Remember `tsc --init` to create `tsconfig.json`
+   - This tells the compiler where to find the files, and where to place the output files `(*.json)`.
+   - `tsc -w` tells compiler to watch all files in `/src/` to watch our files for any changes. Output says if changes are detected.
+
+2. Concurrent Compilation and Execution
+
+   - Generate `package.json` file using `npm init -y`
+   - Download command line tools:
+     ```
+     npm install nodemon concurrently
+     ```
+   - `nodemon` allows us to re-run node compiler each time a change is made in our files. It is responsible for executing the code everytime we save.
+   - `concurrently` is going to be responsible for helping us run multiple scripts at the same time.
+   - See lines `#6` to `#9` to see possbile scripts (we have 3), to make compiler run, watch, and execute at the same time:
+
+     - `"start:build": "tsc -w"` to build and watch files,
+     - `"start:run": "nodemon build/index.js"` to run and execute
+     - `"start": "concurrently npm:start:*"` to have concurrently run both above at the same time.
+
+   - Now our code will re-build and re-run each time a change is made and saved in our `/src/` files
+
+## Re-using Code in an algorithm project
+
+#See `/TS_APP/sort/src/index.ts`
+
+1.
