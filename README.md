@@ -51,6 +51,15 @@ npm init --y /* for default package.json file */
 
 TypeScript is Basically JavaScript with more Debugging as you develop, rather than during compilation and testing. Almost everything in TypeScript is exactly with Java, except for Type annotation is required in almost all cases.
 
+TypeScript has Decorators and Type Annotation, eg;
+```
+// TypeScript:
+addMessage(@Body( body: AddMessageDto ) {}
+// JavaScript:
+addMessage(@Body(body) {}
+```
+***We never execute TypeScript Directly***
+
 ## Summary
 
 1. Annotating our variables will give us errors if we make type syntax mistakes while in dev.
@@ -86,6 +95,11 @@ TypeScript is Basically JavaScript with more Debugging as you develop, rather th
    1. Annotations: Code we tell TypeScript; what type of value a variable will refer to.
    2. Inference: TypeScript will guess the type.
    3. Thanks to `interfaces`, object types can have multiple types, as long as they satisfy the `interface` requirements.
+
+6. Union Types:
+      - TypeScript will restrict the properties we can access on the resulting type.
+
+7. TypeScript Doesn't support index in strings, and will alert a string index is only readable.
 
 ## Notes:
 
@@ -244,4 +258,20 @@ TypeScript is Basically JavaScript with more Debugging as you develop, rather th
 
 #See `/TS_APP/sort/src/index.ts`
 
-1.
+Making a algorithm work for both `numbers` and `strings`:
+   
+   1. Since TypeScript doesn't accept string index modification:
+
+      - Need two conditions one for number and one for string
+
+      - We can implement a Type Guards (See `/sort/src/index.ts` line `#23`):
+         - Clarifies what is the type of the input
+         - There are two types of Type Guards:
+            - If Primitive: `if (typeof variable === 'type')`  - Only Works for Primitive Type as a Type Guard. (line `#31`)
+            - If other Type: `if (this.var instanceof everyOtherValueConstructorCreates)`
+            See line `#23`
+
+   2. Iterface Implemetation:
+
+      -  Create Class of Sorting Logic and Create Class of Variables Types to be Sorted
+      -  Create Interface with Properties that all Classes can Adhere to
