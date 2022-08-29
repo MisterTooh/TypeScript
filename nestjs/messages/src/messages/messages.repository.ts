@@ -1,6 +1,8 @@
+import { Injectable } from '@nestjs/common';
 import { readFile, writeFile } from 'fs/promises'
 import { v4 as uuidv4 } from 'uuid'
 
+@Injectable()
 export class  MessagesRepository {
     async findOne(id: string) {
         const contents = await readFile('messages.json', 'utf8');

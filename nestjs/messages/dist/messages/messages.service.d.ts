@@ -1,12 +1,8 @@
-interface Repository {
-    findOne(id: string): any;
-    findAll(): any;
-    create(content: string): any;
-}
+import { MessagesRepository } from "./messages.repository";
 export declare class MessagesService {
-    messagesRepo: Repository;
-    findOne(id: string): any;
-    findAll(): any;
-    create(content: string): any;
+    messagesRepo: MessagesRepository;
+    constructor(messagesRepo: MessagesRepository);
+    findOne(id: string): Promise<any>;
+    findAll(): Promise<any>;
+    create(content: string): Promise<void>;
 }
-export {};

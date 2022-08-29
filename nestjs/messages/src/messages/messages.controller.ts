@@ -6,14 +6,14 @@ import { MessagesService } from './messages.service';
 // Class Decoorator (The http link will be http:link:port/message)
 @Controller('messages')
 export class MessagesController {
-    messagesService: MessagesService;
-
     //! BAD PRACTICE, DON'T DO IT
     //! We are again creating dependency here
+    // messagesService: MessagesService;
     // constructor() {
         //     this.messagesService = new MessagesService();
     // }
     //? Use dependency injection
+    constructor(public messagesService: MessagesService) {}
         
         
     // Method Decorator
