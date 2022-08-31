@@ -7,12 +7,12 @@ import { MessagesService } from './messages.service';
 @Controller('messages')
 export class MessagesController {
     //! BAD PRACTICE, DON'T DO IT
-    //! We are again creating dependency here
+    //! We are creating dependency here
     // messagesService: MessagesService;
     // constructor() {
         //     this.messagesService = new MessagesService();
     // }
-    //? Use dependency injection
+    //? Best Practice:  Use dependency injection
     constructor(public messagesService: MessagesService) {}
         
         
