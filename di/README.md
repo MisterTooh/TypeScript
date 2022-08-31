@@ -77,8 +77,8 @@ Repeat this process for each module and remember to include the import statement
 
 Focusing on Power and CPU Module:
 
-- We  create a power moodule and list powerservice in a array  of providers which creates our DI Container.
-- Our container lists all ouor classes annd dependencies.
+- We  create a power module and list powerservice in a array  of providers which creates our DI Container.
+- Our container lists all our classes annd dependencies.
 - By adding exports, which gives our container a list of all the different classes which can bbe used in other containers or modules.
 - Whenever we decide to import the power module into other modules, we add the power module listings into the CPU Module DI Conntainer, which makes it available to all other services within the CPU Module DI Container.
 - In reality it is all in one DI container but is all scoped within their respective modules to limit what classes can see in other classes.
