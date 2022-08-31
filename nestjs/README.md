@@ -267,12 +267,12 @@ Note: See `/src/app.controller.ts`
 
 8.  Dependency Injector - Nest DI Container/Injector:
     1.  List of Classes and their Dependencies:
-        -   When we create our nest application, a DI coontainner is created for us, when we startup our application we are going to take a look at all the different classeses that we created inside our applicationns except for our controllers.
-        -   We are going to attempt register each of these different classes with oour  DI containner:
-            -   Take our messages service and feed it into our DI Coonntainner.
+        -   When we create our nest application, a DI container is created for us, when we startup our application we are going to take a look at all the different classeses that we created inside our applications except for our controllers.
+        -   We are going to attempt register each of these different classes with our DI container:
+            -   Take our messages service and feed it into our DI Container.
             -   The container is then going to analyse our class and look at all the dependencies and setup internal records that ensures that if a service is created, a Repository must be present.
         -   We take a Controller and feed it into Container:
-            -   Container is going to look at controller and connstructor arguments and controller dependencies
+            -   Container is going to look at controller and constructor arguments and controller dependencies
             -   The DI Containner will create a copy of the service, and it's dependency Repo, then create the controller.
 
     2.  The entire goal of the container is to register all of our different classes and record  all the different classes dependencies, and then use the conatiner to create a new instance of a controller and create all the appropriate instances based on the dependencies.
@@ -325,6 +325,15 @@ Note: See `/src/app.controller.ts`
         -   ***Down sides***
             -   Adds Multiple lines of code (About 3 times more).
                 -   Dependency Injection Solves this.
+ 
+9.  Implementing DI Injector:
+
+    1.  First 2 Sections of Flow: Use 'Injectible' Decorator on each class and add them to the modules list of providers. **SEE BELOW**.
+        -   Import Injectable from `@nestjs/common`
+    2.  **Note: We Do not need to register the controller because the controller is only consuming classes.**
+    3.  Next 2 Sections of Flow: Happens Automatically - Nest will try to create cnotroller instances for us.
+    4.  In Nestjs -> Providers = Things that can be used as dependencies for other classes.
+    5.  See lines `#7 -> #8` providers in `/messages/messages.module.ts`
 
 
 # API Clients
@@ -332,5 +341,4 @@ Note: See `/src/app.controller.ts`
 1.  postman:
     -   I am using Postman, very easy to setup and use.
 
-2.  VSCode REST Client Extension
-    -      
+2.  VSCode REST Client Extension.
